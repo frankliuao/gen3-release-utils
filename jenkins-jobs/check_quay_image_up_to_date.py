@@ -48,7 +48,6 @@ repo_dict = {
     "pelican": "pelican-export",
     "docker-nginx": "nginx",
     "gen3-fuse": "gen3fuse-sidecar",
-    "cloud-automation": "awshelper",
     "dataguids.org": "dataguids",
     "ACCESS-backend": "access-backend",
 }
@@ -63,6 +62,10 @@ with open("repo_list.txt") as repoList:
             get_image()
             continue
         elif repo == "cdis-data-client":
+            print(f"### Services : {services}")
+            print("No docker image found")
+            continue
+        elif repo == "awshelper":
             print(f"### Services : {services}")
             print("No docker image found")
             continue
