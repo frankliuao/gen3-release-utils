@@ -4,7 +4,6 @@ fence
 cdis-data-client
 guppy
 hatchery
-indexd
 manifestservice
 pelican
 peregrine
