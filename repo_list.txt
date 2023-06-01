@@ -23,7 +23,6 @@ metadata-service
 docker-nginx
 dcf-dataservice
 ws-storage
-ACCESS-backend
 cloud-automation
 dataguids.org
 audit-service
