@@ -27,4 +27,3 @@ cloud-automation
 dataguids.org
 audit-service
 requestor
-ecs-ws-sidecar
