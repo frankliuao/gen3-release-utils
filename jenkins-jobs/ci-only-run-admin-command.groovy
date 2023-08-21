@@ -38,11 +38,13 @@ pipeline {
                         source $GEN3_HOME/gen3/gen3setup.sh
                     '''
                     println env.COMMAND
-                    RESULT = sh (
-                        script: ${COMMAND},
-                        returnStdout: true
-                    ).trim()
-                    echo "RESULT: ${RESULT}"
+                    script {
+                        RESULT = sh (
+                            script: ${COMMAND},
+                            returnStdout: true
+                        ).trim()
+                        echo "RESULT: ${RESULT}"
+                    }
                 }
             }
         }
