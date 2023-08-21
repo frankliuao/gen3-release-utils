@@ -40,7 +40,7 @@ pipeline {
                     script {
                         println env.COMMAND
                         def RESULT = sh (
-                            script: \${COMMAND},
+                            script: "\${COMMAND}",
                             returnStdout: true
                         ).trim()
                         println RESULT
