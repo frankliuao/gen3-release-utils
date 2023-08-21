@@ -37,7 +37,7 @@ pipeline {
                             export GEN3_HOME=\$WORKSPACE/cloud-automation
                             export KUBECTL_NAMESPACE=\${TARGET_ENVIRONMENT}
                             source \$GEN3_HOME/gen3/gen3setup.sh
-                            RESULT=\$COMMAND
+                            RESULT=`\$COMMAND`
                             echo "RESULT: \$RESULT"
                         '''
                     }
