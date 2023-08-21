@@ -36,11 +36,10 @@ pipeline {
                         sh '''#!/bin/bash +x
                             export GEN3_HOME=\$WORKSPACE/cloud-automation
                             export KUBECTL_NAMESPACE=\${TARGET_ENVIRONMENT}
-                            source $GEN3_HOME/gen3/gen3setup.sh
                         '''
                         println env.COMMAND
                         def RESULT = sh (
-                            script: "\${COMMAND}",
+                            script: "source \$GEN3_HOME/gen3/gen3setup.sh && \${COMMAND}",
                             returnStdout: true
                         ).trim()
                         println RESULT
