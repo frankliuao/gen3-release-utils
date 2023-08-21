@@ -42,8 +42,7 @@ pipeline {
                         script: ${COMMAND},
                         returnStdout: true
                     ).trim()
-                    sh 'echo "RESULT: \${RESULT}"'
-}
+                    println RESULT
                 }
             }
         }
