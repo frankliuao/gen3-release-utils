@@ -33,16 +33,21 @@ pipeline {
             steps {
                 dir("run-command") {
                     script {
-                        sh """#!/bin/bash +x
+                        sh '''#!/bin/bash +x
                             export GEN3_HOME=\$WORKSPACE/cloud-automation
                             export KUBECTL_NAMESPACE=\${TARGET_ENVIRONMENT}
                             source \$GEN3_HOME/gen3/gen3setup.sh
                             RESULT=`\$COMMAND`
-                            echo "RESULT: \$RESULT"
-                        """
+                            echo "\$RESULT" > result.txt
+                        '''
                     }
                 }
             }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: '**/result.txt'
         }
     }
 }
