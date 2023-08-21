@@ -27,17 +27,17 @@ pipeline {
                   submoduleCfg: [],
                   userRemoteConfigs: [[credentialsId: 'PlanXCyborgUserJenkins', url: 'https://github.com/uc-cdis/cloud-automation.git']]
                 ])
-                sh '''#!/bin/bash +x
-                    export GEN3_HOME=\$WORKSPACE/cloud-automation
-                    export KUBECTL_NAMESPACE=\${TARGET_ENVIRONMENT}
-                    source $GEN3_HOME/gen3/gen3setup.sh
-                '''
             }
         }
         stage('Run command on adminvm') {
             steps {
                 dir("run-command") {
                     script {
+                        sh '''#!/bin/bash +x
+                            export GEN3_HOME=\$WORKSPACE/cloud-automation
+                            export KUBECTL_NAMESPACE=\${TARGET_ENVIRONMENT}
+                            source $GEN3_HOME/gen3/gen3setup.sh
+                        '''
                         println env.COMMAND
                         def RESULT = sh (
                             script: "\${COMMAND}",
