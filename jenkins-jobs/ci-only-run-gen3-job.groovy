@@ -44,12 +44,16 @@ pipeline {
                             fi
                             gen3 job run \${JOB_NAME}
                             g3kubectl wait --for=condition=complete --timeout=-1s jobs/\${JOB_NAME}
-                            gen3 job logs \${JOB_NAME}
-                            echo "done"
+                            gen3 job logs \${JOB_NAME} > log.txt
                         '''
                     }
                 }
             }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'run-gen3-job/log.txt'
         }
     }
 }
