@@ -38,7 +38,7 @@ pipeline {
                             export KUBECTL_NAMESPACE=\${TARGET_ENVIRONMENT}
                             source \$GEN3_HOME/gen3/gen3setup.sh
                             RESULT=`gen3 secrets decode portal-config gitops.json`
-                            echo "\$RESULT" > gitops.json
+                            echo "\$RESULT" > gitops.txt
                         '''
                     }
                 }
@@ -47,7 +47,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'fetch-portal-config/gitops.json'
+            archiveArtifacts artifacts: 'fetch-portal-config/gitops.txt'
         }
     }
 }
