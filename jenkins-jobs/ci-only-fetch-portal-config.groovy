@@ -29,9 +29,9 @@ pipeline {
                 ])
             }
         }
-        stage('Run command on adminvm') {
+        stage('Fetch portal config') {
             steps {
-                dir("run-command") {
+                dir("fetch-portal-config") {
                     script {
                         sh '''#!/bin/bash +x
                             export GEN3_HOME=\$WORKSPACE/cloud-automation
@@ -47,7 +47,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: '**/gitops.json'
+            archiveArtifacts artifacts: 'fetch-portal-config/gitops.json'
         }
     }
 }
