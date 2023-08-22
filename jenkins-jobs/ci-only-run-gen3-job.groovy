@@ -43,8 +43,8 @@ pipeline {
                             gen3 roll all
                             fi
                             gen3 job run \${JOB_NAME}
-                            sleep 60
-                            gen3 job logs \${JOB_NAME} -f
+                            g3kubectl wait --for=condition=complete --timeout=-1s jobs/\${JOB_NAME}
+                            gen3 job logs \${JOB_NAME}
                             echo "done"
                         '''
                     }
