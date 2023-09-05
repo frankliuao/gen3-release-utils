@@ -42,7 +42,10 @@ pipeline {
                             source \$GEN3_HOME/gen3/gen3setup.sh
                             times=0
                             lockName=jenkins
-                            lockOwner="\$REPO_\$BRANCH"
+                            echo "REPO: \$REPO"
+                            echo "BRANCH: \$BRANCH"
+                            branch=\$(echo "\$BRANCH" | sed \'s/[/()]/_/g\')
+                            lockOwner="\$REPO-\$branch"
                             echo "lockOwner: \$lockOwner"
                             IFS=',' read -ra namespaces <<< "$AVAILABLE_NAMESPACES"
                             while [ "$times" -ne 120 ]; do
