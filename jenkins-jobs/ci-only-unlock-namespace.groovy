@@ -42,7 +42,7 @@ pipeline {
                             lockName=jenkins
                             echo "REPO: \$REPO"
                             echo "BRANCH: \$BRANCH"
-                            lockOwner="\$REPO_\$BRANCH"
+                            lockOwner="\$REPO-\$BRANCH"
                             echo "lockOwner: \$lockOwner"
                             echo "attempting to unlock namespace \$NAMESPACE"
                             export KUBECTL_NAMESPACE="\$NAMESPACE"
