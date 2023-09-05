@@ -45,10 +45,10 @@ pipeline {
                             if [[ $klockResult -eq 0 ]]; then
                                 echo "namespace $kubectlNamespace"
                                 echo "$kubectlNamespace" > namespace.txt
-                                return 0
+                                exit 0
                             else
                                 # Unable to unlock namespace
-                                echo "no available workspace, yet..."
+                                exit 1
                             fi
                         '''
                     }
