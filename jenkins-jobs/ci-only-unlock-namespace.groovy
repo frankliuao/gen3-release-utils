@@ -39,11 +39,13 @@ pipeline {
                         sh '''#!/bin/bash +x
                             export GEN3_HOME=\$WORKSPACE/cloud-automation
                             source \$GEN3_HOME/gen3/gen3setup.sh
-                            echo "attempting to unlock namespace $NAMESPACE"
-                            export KUBECTL_NAMESPACE="$NAMESPACE"
+                            lockName=jenkins
+                            lockOwner="\$REPO_\$BRANCH"
+                            echo "attempting to unlock namespace \$NAMESPACE"
+                            export KUBECTL_NAMESPACE="\$NAMESPACE"
                             klockResult=$(bash "$GEN3_HOME/gen3/bin/klock.sh" "unlock" "jenkins" "$REPO_$BRANCH")
                             if [[ $klockResult -eq 0 ]]; then
-                                echo "namespace $kubectlNamespace"
+                                echo "Unlocked namespace $KUBECTL_NAMESPACE"
                                 echo "$kubectlNamespace" > namespace.txt
                                 exit 0
                             else
