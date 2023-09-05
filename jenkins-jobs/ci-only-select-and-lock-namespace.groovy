@@ -50,6 +50,7 @@ pipeline {
                                     export KUBECTL_NAMESPACE="\${namespaces[$i]}"
                                     echo "attempting to lock namespace \$KUBECTL_NAMESPACE with a wait time of 1 minute"
                                     klockResult=$(bash "$GEN3_HOME/gen3/bin/klock.sh" "lock" "\$lockName" "\$lockOwner" 10800 -w 60)
+                                    echo "RESULT: \$klockResult"
                                     if [[ \$klockResult -eq 0 ]]; then
                                         echo "Selected namespace \$KUBECTL_NAMESPACE"
                                         echo "\$KUBECTL_NAMESPACE" > namespace.txt
