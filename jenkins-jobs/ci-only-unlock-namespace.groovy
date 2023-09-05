@@ -42,6 +42,7 @@ pipeline {
                             lockName=jenkins
                             echo "REPO: \$REPO"
                             echo "BRANCH: \$BRANCH"
+                            branch=\$(echo "\$BRANCH" | sed \'s/[/()]/_/g\')
                             lockOwner="\$REPO-\$BRANCH"
                             echo "lockOwner: \$lockOwner"
                             echo "attempting to unlock namespace \$NAMESPACE"
