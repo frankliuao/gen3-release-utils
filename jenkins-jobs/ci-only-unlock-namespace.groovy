@@ -43,7 +43,7 @@ pipeline {
                             echo "REPO: \$REPO"
                             echo "BRANCH: \$BRANCH"
                             branch=\$(echo "\$BRANCH" | sed \'s/[/()]/_/g\')
-                            lockOwner="\$REPO-\$BRANCH"
+                            lockOwner="\$REPO-\$branch"
                             echo "lockOwner: \$lockOwner"
                             echo "attempting to unlock namespace \$NAMESPACE"
                             export KUBECTL_NAMESPACE="\$NAMESPACE"
