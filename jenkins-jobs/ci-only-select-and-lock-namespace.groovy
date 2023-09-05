@@ -49,7 +49,7 @@ pipeline {
                                 # Try to find an unlocked namespace
                                 for ((i=0; i<\${#namespaces[@]}; i++)); do
                                     export KUBECTL_NAMESPACE="\${namespaces[$i]}"
-                                    echo "attempting to lock namespace \$KUBECTL_NAMESPACE with a wait time of 1 minute"
+                                    echo "attempting to lock namespace \$KUBECTL_NAMESPACE"
                                     klockResult=$(bash "$GEN3_HOME/gen3/bin/klock.sh" "lock" "\$lockName" "\$lockOwner" 10800 -w 60)
                                     echo "RESULT: \$klockResult"
                                     if [[ \$klockResult =~ ^.*labeled$ ]]; then
