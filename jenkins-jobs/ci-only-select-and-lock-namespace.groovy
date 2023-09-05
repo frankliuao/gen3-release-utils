@@ -68,7 +68,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: 'select-and-lock-namespace/gitops.json'
+            archiveArtifacts artifacts: 'select-and-lock-namespace/namespace.txt'
         }
     }
 }
